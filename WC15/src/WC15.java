@@ -29,9 +29,8 @@ public class WC15
    * @return
    */
   public static String centralThree(String letters)
-  {
-    //TODO: Finish
-    return "no";
+  { 
+    return letters.substring(letters.length() / 2 - 1, letters.length() / 2 + 2);
   }
 
   /**
@@ -51,8 +50,24 @@ public class WC15
    */
   public static String chopFront(String str)
   {
-    //TODO: Finish
-    return "no";
+    String word = "";
+    
+    if (str.substring(0, 1).compareTo("a") == 0)
+    {
+      word += "a";
+    }
+    
+    if (str.substring(1, 2).compareTo("b") == 0)
+    {
+      word += "b";
+    }
+    
+    if (str.length() >= 2)
+    {
+      word += str.substring(2, str.length());
+    }
+    
+    return word;
   }
 
   /**
@@ -72,8 +87,24 @@ public class WC15
    */
   public static String hateX(String str)
   {
-    //TODO: Finish
-    return "no";
+    String word = "";
+    
+    if (str.substring(0, 1).compareTo("x") != 0)
+    {
+      word += str.substring(0, 1);
+    }
+    
+    if (str.substring(1, 2).compareTo("x") != 0)
+    {
+      word += str.substring(1, 2);
+    }
+    
+    if (str.length() >= 2)
+    {
+      word += str.substring(2, str.length());
+    }
+    
+    return word;
   }
 
   /**
@@ -88,7 +119,9 @@ public class WC15
    */
   public static void swapRows(int[][] mat, int rowAIndex, int rowBIndex)
   {
-    //TODO: Finish
+    int [] template = mat[rowAIndex];
+    mat[rowAIndex] = mat[rowBIndex];
+    mat[rowBIndex] = template;
   }
 
   /**
@@ -103,7 +136,14 @@ public class WC15
    */
   public static void swapColumns(int[][] mat, int colAIndex, int colBIndex)
   {
-    //TODO: Finish
+    int [] template = new int[mat.length];
+    
+    for (int r = 0; r < mat.length; r++)
+    {
+      template[r] = mat[r][colAIndex];
+      mat[r][colAIndex] = mat[r][colBIndex];
+      mat[r][colBIndex] = template[r];
+    }
   }
 
   /**
@@ -122,8 +162,39 @@ public class WC15
    */
   public static String[][] fill2DWithLetters(String str, int rows, int cols)
   {
-    //TODO: Finish
-    return new String[][] {{"42"}};
+    String [][] array = new String[rows][cols];
+    int stringLength = 0;
+    
+    if (str.length() > rows * cols)
+    {
+      for (int r = 0; r < rows; r++)
+      {
+        for (int c = 0; c < cols; c++)
+        {
+          if (stringLength <= rows * cols)
+          {
+            array[r][c] = str.substring(stringLength, stringLength + 1);
+            stringLength++;
+          }
+        }
+      }
+    }
+    else if (str.length() < rows * cols)
+    {
+      for (int r = 0; r < rows; r++)
+      {
+        for (int c = 0; c < cols; c++)
+        {
+          if (stringLength < str.length())
+          {
+            array[r][c] = str.substring(stringLength, stringLength + 1);
+            stringLength++;
+          }
+        }
+      }
+    }
+    
+    return array;
   }
 
   /**
