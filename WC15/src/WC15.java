@@ -226,8 +226,21 @@ public class WC15
    */
   public static int[][] fillDownAndUp(int[] vals, int rows, int cols)
   {
-    //TODO: Finish
-    return new int[][] {{42}};
+    int valCounter = 0;
+    int rowsValue = 0;
+    int colsValue = 0;
+    int [][] array = new int [rows][cols];
+    
+    for (int value : vals)
+    {
+    	if (rowsValue < rows)
+    	{
+    		array[rowsValue][colsValue] = value;
+    		rowsValue++;
+    	}
+    }
+    
+    return array;
   }
 
   /**
