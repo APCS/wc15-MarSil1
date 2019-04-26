@@ -229,14 +229,43 @@ public class WC15
     int valCounter = 0;
     int rowsValue = 0;
     int colsValue = 0;
+    
     int [][] array = new int [rows][cols];
     
-    for (int value : vals)
+    for (int c = 0; c < vals.length; c++)
     {
-    	if (rowsValue < rows)
+    	if (rowsValue < rows && colsValue < cols)
     	{
-    		array[rowsValue][colsValue] = value;
-    		rowsValue++;
+    		for (int i = 0; i < rows; i++)
+    		{
+    			array[rowsValue][colsValue] = vals[c];
+        		rowsValue++;
+        		valCounter++;
+        		if (c < vals.length - 1)
+        		{
+        			c++;
+        		}
+    		}
+    		colsValue++;
+    	}
+    	
+    	if (valCounter == rows && colsValue < cols)
+    	{
+    		rowsValue--;
+    		for (int i = 0; i < rows; i++)
+    		{
+    			array[rowsValue][colsValue] = vals[c];
+    			if (rowsValue > 0)
+    			{
+    				rowsValue--;
+    			}
+        		valCounter--;
+        		if (c < vals.length - 1  && i + 1 != rows)
+        		{
+        			c++;
+        		}
+    		}
+    		colsValue++;
     	}
     }
     
@@ -275,7 +304,9 @@ public class WC15
   public static int[][] crop2D(int[][] mat, int startRow, int startCol,
       int endRow, int endCol)
   {
-    //TODO: Finish
+	  
+	  
+	  
     return new int[][] {{42}};
   }
 
