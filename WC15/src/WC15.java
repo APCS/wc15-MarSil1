@@ -29,8 +29,9 @@ public class WC15
    * @return
    */
   public static String centralThree(String letters)
-  { 
-    return letters.substring(letters.length() / 2 - 1, letters.length() / 2 + 2);
+  {
+    return letters.substring(letters.length() / 2 - 1,
+      letters.length() / 2 + 2);
   }
 
   /**
@@ -51,22 +52,22 @@ public class WC15
   public static String chopFront(String str)
   {
     String word = "";
-    
+
     if (str.substring(0, 1).compareTo("a") == 0)
     {
       word += "a";
     }
-    
+
     if (str.substring(1, 2).compareTo("b") == 0)
     {
       word += "b";
     }
-    
+
     if (str.length() >= 2)
     {
       word += str.substring(2, str.length());
     }
-    
+
     return word;
   }
 
@@ -88,22 +89,22 @@ public class WC15
   public static String hateX(String str)
   {
     String word = "";
-    
+
     if (str.substring(0, 1).compareTo("x") != 0)
     {
       word += str.substring(0, 1);
     }
-    
+
     if (str.substring(1, 2).compareTo("x") != 0)
     {
       word += str.substring(1, 2);
     }
-    
+
     if (str.length() >= 2)
     {
       word += str.substring(2, str.length());
     }
-    
+
     return word;
   }
 
@@ -119,7 +120,7 @@ public class WC15
    */
   public static void swapRows(int[][] mat, int rowAIndex, int rowBIndex)
   {
-    int [] template = mat[rowAIndex];
+    int[] template = mat[rowAIndex];
     mat[rowAIndex] = mat[rowBIndex];
     mat[rowBIndex] = template;
   }
@@ -136,8 +137,8 @@ public class WC15
    */
   public static void swapColumns(int[][] mat, int colAIndex, int colBIndex)
   {
-    int [] template = new int[mat.length];
-    
+    int[] template = new int[mat.length];
+
     for (int r = 0; r < mat.length; r++)
     {
       template[r] = mat[r][colAIndex];
@@ -162,9 +163,9 @@ public class WC15
    */
   public static String[][] fill2DWithLetters(String str, int rows, int cols)
   {
-    String [][] array = new String[rows][cols];
+    String[][] array = new String[rows][cols];
     int stringLength = 0;
-    
+
     if (str.length() > rows * cols)
     {
       for (int r = 0; r < rows; r++)
@@ -193,7 +194,7 @@ public class WC15
         }
       }
     }
-    
+
     return array;
   }
 
@@ -229,46 +230,46 @@ public class WC15
     int valCounter = 0;
     int rowsValue = 0;
     int colsValue = 0;
-    
-    int [][] array = new int [rows][cols];
-    
+
+    int[][] array = new int[rows][cols];
+
     for (int c = 0; c < vals.length; c++)
     {
-    	if (rowsValue < rows && colsValue < cols)
-    	{
-    		for (int i = 0; i < rows; i++)
-    		{
-    			array[rowsValue][colsValue] = vals[c];
-        		rowsValue++;
-        		valCounter++;
-        		if (c < vals.length - 1)
-        		{
-        			c++;
-        		}
-    		}
-    		colsValue++;
-    	}
-    	
-    	if (valCounter == rows && colsValue < cols)
-    	{
-    		rowsValue--;
-    		for (int i = 0; i < rows; i++)
-    		{
-    			array[rowsValue][colsValue] = vals[c];
-    			if (rowsValue > 0)
-    			{
-    				rowsValue--;
-    			}
-        		valCounter--;
-        		if (c < vals.length - 1  && i + 1 != rows)
-        		{
-        			c++;
-        		}
-    		}
-    		colsValue++;
-    	}
+      if (rowsValue < rows && colsValue < cols)
+      {
+        for (int i = 0; i < rows; i++)
+        {
+          array[rowsValue][colsValue] = vals[c];
+          rowsValue++;
+          valCounter++;
+          if (c < vals.length - 1)
+          {
+            c++;
+          }
+        }
+        colsValue++;
+      }
+
+      if (valCounter == rows && colsValue < cols)
+      {
+        rowsValue--;
+        for (int i = 0; i < rows; i++)
+        {
+          array[rowsValue][colsValue] = vals[c];
+          if (rowsValue > 0)
+          {
+            rowsValue--;
+          }
+          valCounter--;
+          if (c < vals.length - 1 && i + 1 != rows)
+          {
+            c++;
+          }
+        }
+        colsValue++;
+      }
     }
-    
+
     return array;
   }
 
@@ -304,10 +305,17 @@ public class WC15
   public static int[][] crop2D(int[][] mat, int startRow, int startCol,
       int endRow, int endCol)
   {
-	  
-	  
-	  
-    return new int[][] {{42}};
+    int[][] array = new int[endRow - startRow + 1][endCol - startCol + 1];
+
+    for (int r = startRow; r <= endRow; r++)
+    {
+      for (int c = startCol; c <= endCol; c++)
+      {
+        array[r - startRow][c - startCol] = mat[r][c];
+      }
+    }
+
+    return array;
   }
 
 }
